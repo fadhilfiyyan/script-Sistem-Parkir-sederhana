@@ -1,0 +1,62 @@
+﻿#include <iostream>
+using namespace std;
+
+const int hargaParkir = 5000; // Harga parkir per jam
+
+int main() {
+    int kapasitasParkir = 10; // Kapasitas parkir maksimal
+    int jumlahKendaraan = 0; // Jumlah kendaraan yang saat ini parkir
+
+    while (true) {
+        cout << "========== Sistem Parkir ==========" << endl;
+        cout << "Jumlah Kendaraan Parkir: " << jumlahKendaraan << "/" << kapasitasParkir << endl;
+        cout << "1. Masukkan Kendaraan" << endl;
+        cout << "2. Keluarkan Kendaraan" << endl;
+        cout << "3. Keluar dari Program" << endl;
+        cout << "Pilih Menu: ";
+        
+        int pilihan;
+        cin >> pilihan;
+
+        if (pilihan == 1) {
+            // Memasukkan kendaraan ke dalam parkir
+            if (jumlahKendaraan < kapasitasParkir) {
+                jumlahKendaraan++;
+                cout << "Kendaraan berhasil dimasukkan ke dalam parkir." << endl;
+            }
+            else {
+                cout << "Parkir sudah penuh, mohon coba lagi nanti." << endl;
+            }
+        }
+        else if (pilihan == 2) {
+            // Mengeluarkan kendaraan dari parkir
+            if (jumlahKendaraan > 0) {
+                int lamaParkir;
+                cout << "Masukkan lama parkir (dalam jam): ";
+                cin >> lamaParkir;
+
+                int totalHarga = lamaParkir * hargaParkir;
+                cout << "Total harga parkir: " << totalHarga << " rupiah" << endl;
+
+                jumlahKendaraan--;
+                cout << "Kendaraan berhasil dikeluarkan dari parkir." << endl;
+            }
+            else {
+                cout << "Tidak ada kendaraan yang sedang parkir." << endl;
+            }
+        }
+        else if (pilihan == 3) {
+            // Keluar dari program
+            break;
+        }
+        else {
+            cout << "Pilihan tidak valid. Mohon pilih menu yang benar." << endl;
+        }
+
+        cout << endl;
+    }
+
+    cout << "Terima kasih telah menggunakan Sistem Parkir." << endl;
+
+    return 0;
+}
